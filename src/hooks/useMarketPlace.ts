@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { HamburgerMenus, Promotions } from "../types";
+import { HamburgerMenus, Promotions, Viewed } from "../types";
 import { db } from "../data/db";
 import { promotions } from "../data/promotionDb";
+import { dbViewed } from "../data/dbViewed";
 export const useMartketPlace = () => {
 
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -12,6 +13,8 @@ export const useMartketPlace = () => {
     const [data, setData] = useState<HamburgerMenus[]>(db);
 
     const [dbPromo, setDbPromo] = useState<Promotions[]>(promotions);
+
+    const [dbRecentViewed, setDbRecentViewed] = useState<Viewed[]>(dbViewed)
     const [currentIndex, setCurrentIndex] = useState<number>(0);
   
     const nextImage = () => {
@@ -23,6 +26,10 @@ export const useMartketPlace = () => {
         (prevIndex) => (prevIndex - 1 + dbPromo.length) % dbPromo.length
       );
     };
+
+
+  
+
     return{
         menuOpen,
         setMenuOpen,
@@ -34,6 +41,9 @@ export const useMartketPlace = () => {
         currentIndex,
         setCurrentIndex,
         nextImage,
-        prevImage
+        prevImage,
+        dbRecentViewed,
+        setDbRecentViewed,
+
     }
 }

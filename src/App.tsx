@@ -4,9 +4,24 @@ import { useMartketPlace } from "./hooks/useMarketPlace";
 import Carrousel from "./components/Carrousel";
 import HamburgerMenu from "./components/HamburgerMenu";
 import RecentlyViewed from "./components/RecentlyViewed";
+
 const App = () => {
-  const { menuOpen, setMenuOpen, toggleMenu, data, setData, dbPromo, setDbPromo, currentIndex, setCurrentIndex, nextImage, prevImage } =
-    useMartketPlace();
+  const {
+    menuOpen,
+    setMenuOpen,
+    toggleMenu,
+    data,
+    setData,
+    dbPromo,
+    setDbPromo,
+    currentIndex,
+    setCurrentIndex,
+    nextImage,
+    prevImage,
+    dbRecentViewed,
+    setDbRecentViewed
+  } = useMartketPlace();
+
   return (
     <div className="bg-gray-500 min-h-screen ">
       {/* {menuOpen && (
@@ -17,12 +32,18 @@ const App = () => {
       )} */}
       <Header menuOpen={menuOpen} toggleMenu={toggleMenu} />
       {menuOpen && <HamburgerMenu data={data} setData={setData} />}
-      <Carrousel dbPromo={dbPromo} setDbPromo={setDbPromo} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} nextImage={nextImage} prevImage={prevImage} />
+      <Carrousel
+        dbPromo={dbPromo}
+        setDbPromo={setDbPromo}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+        nextImage={nextImage}
+        prevImage={prevImage}
+      />
       {/* <div className="bg-gradient-to-t bg-red-500 h-40 opacity-5"></div> */}
-      <div className="bg-gradient-to-t from-white to-slate-400 h-40 opacity-50 filter blur-lg">
+      {/* <div className="bg-gradient-to-t from-white to-slate-400 h-40 opacity-50 filter blur-lg"></div> */}
 
-      </div>
-        <RecentlyViewed/>
+      <RecentlyViewed dbRecentViewed={dbRecentViewed} currentIndex={currentIndex} nextImage={nextImage} prevImage={prevImage}/>
     </div>
   );
 };

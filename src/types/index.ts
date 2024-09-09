@@ -1,3 +1,4 @@
+
 export type HamburgerMenus = {
   id: number;
   name: string;
@@ -6,3 +7,5 @@ export type HamburgerMenus = {
 
 
 export type Promotions = Omit<HamburgerMenus, "name"> 
+
+export type Viewed = HamburgerMenus

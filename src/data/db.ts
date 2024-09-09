@@ -1,43 +1,44 @@
 import { HamburgerMenus } from "../types";
+import {generateId} from "../helpers/helpers"
 
 export const db: HamburgerMenus[] = [
   {
-    id:1,
+    id:generateId(),
     name:"home",
     image:"house_01",
   },
   {
-    id:2,
+    id:generateId(),
     name:"search",
     image:"search_02",
   },
   {
-    id:3,
+    id:generateId(),
     name:"bell",
     image:"bell_03",
   },
   {
-    id:4,
+    id:generateId(),
     name:"bag",
     image:"bag_04",
   },
   {
-    id:5,
+    id:generateId(),
     name:"heart",
     image:"heart_05",
   },
   {
-    id:6,
+    id:generateId(),
     name:"percent",
     image:"percent_06",
   },
   {
-    id:7,
+    id:generateId(),
     name:"clock",
     image:"clock_07",
   },
   {
-    id:8,
+    id:generateId(),
     name:"headset",
     image:"headset_08",
   },
