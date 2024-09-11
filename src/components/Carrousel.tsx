@@ -4,12 +4,13 @@ import React, { useState } from "react";
 import { Promotions } from "../types";
 
 type CarrouselProps = {
-  dbPromo: Promotions[],
-  setDbPromo: React.Dispatch<React.SetStateAction<Promotions[]>>,
-  currentIndex: number
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>,
-  nextImage: () => void,
-  prevImage: () => void
+  dbPromo: Promotions[];
+  setDbPromo: React.Dispatch<React.SetStateAction<Promotions[]>>;
+  currentIndex: number;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  nextImage: () => void;
+  prevImage: () => void;
+
 }
 
 const Carrousel = ({dbPromo,setDbPromo, currentIndex, setCurrentIndex, nextImage, prevImage}:CarrouselProps) => {
