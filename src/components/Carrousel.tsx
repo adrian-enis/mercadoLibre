@@ -7,15 +7,15 @@ type CarrouselProps = {
   dbPromo: Promotions[];
   setDbPromo: React.Dispatch<React.SetStateAction<Promotions[]>>;
   currentIndex: number;
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+
   nextImage: () => void;
   prevImage: () => void;
 
 }
 
-const Carrousel = ({dbPromo,setDbPromo, currentIndex, setCurrentIndex, nextImage, prevImage}:CarrouselProps) => {
+const Carrousel = ({dbPromo, currentIndex,  nextImage, prevImage}:CarrouselProps) => {
  
-
+console.log(currentIndex)
   return (
     <div className="bg-slate-700  w-full relative z-30  ">
       {dbPromo.length > 0 && (
