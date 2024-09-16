@@ -14,12 +14,14 @@ const App = () => {
     setData,
     dbPromo,
     setDbPromo,
-    currentIndex,
-    setCurrentIndex,
-    nextImage,
-    prevImage,
+    promoIndex,
+    nextPromoImage,
+    prevPromoImage,
     dbRecentViewed,
-    setDbRecentViewed
+    setDbRecentViewed,
+    viewedIndex,
+    nextViewedImage,
+    prevViewedImage,
   } = useMartketPlace();
 
   return (
@@ -35,15 +37,15 @@ const App = () => {
       <Carrousel
         dbPromo={dbPromo}
         setDbPromo={setDbPromo}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-        nextImage={nextImage}
-        prevImage={prevImage}
+        currentIndex={promoIndex}
+      
+        nextImage={nextPromoImage}
+        prevImage={prevPromoImage}
       />
       {/* <div className="bg-gradient-to-t bg-red-500 h-40 opacity-5"></div> */}
       {/* <div className="bg-gradient-to-t from-white to-slate-400 h-40 opacity-50 filter blur-lg"></div> */}
 
-      <RecentlyViewed dbRecentViewed={dbRecentViewed} currentIndex={currentIndex} nextImage={nextImage} prevImage={prevImage}/>
+      <RecentlyViewed dbRecentViewed={dbRecentViewed} currentIndex={viewedIndex} nextImage={nextViewedImage} prevImage={prevViewedImage}/>
     </div>
   );
 };
