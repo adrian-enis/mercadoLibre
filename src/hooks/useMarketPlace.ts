@@ -3,6 +3,7 @@ import { HamburgerMenus, Promotions, Viewed } from "../types";
 import { db } from "../data/db";
 import { promotions } from "../data/promotionDb";
 import { dbViewed } from "../data/dbViewed";
+import useCarrousel from "./useCarrousel";
 export const useMartketPlace = () => {
 
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -12,38 +13,38 @@ export const useMartketPlace = () => {
 
     const [data, setData] = useState<HamburgerMenus[]>(db);
 
-    const [dbPromo, setDbPromo] = useState<Promotions[]>(promotions);
+    const {
+      items: dbPromo,
+      currentIndex: promoIndex,
+      nextImage: nextPromoImage,
+      prevImage: prevPromoImage,
+      setItems: setDbPromo,
+  } = useCarrousel<Promotions>(promotions);
 
-    const [dbRecentViewed, setDbRecentViewed] = useState<Viewed[]>(dbViewed)
-    const [currentIndex, setCurrentIndex] = useState<number>(0);
-  
-    const nextImage = () => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % dbPromo.length);
-    };
-  
-    const prevImage = () => {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex - 1 + dbPromo.length) % dbPromo.length
-      );
-    };
-
-
-  
+  const {
+      items: dbRecentViewed,
+      currentIndex: viewedIndex,
+      nextImage: nextViewedImage,
+      prevImage: prevViewedImage,
+      setItems: setDbRecentViewed,
+  } = useCarrousel<Viewed>(dbViewed);
 
     return{
-        menuOpen,
+      menuOpen,
         setMenuOpen,
         toggleMenu,
         data,
         setData,
         dbPromo,
         setDbPromo,
-        currentIndex,
-        setCurrentIndex,
-        nextImage,
-        prevImage,
+        promoIndex,
+        nextPromoImage,
+        prevPromoImage,
         dbRecentViewed,
         setDbRecentViewed,
+        viewedIndex,
+        nextViewedImage,
+        prevViewedImage,
 
     }
 }
