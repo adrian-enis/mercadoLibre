@@ -9,6 +9,19 @@ type HeaderProps = {
 };
 
 const Header = ({ menuOpen, toggleMenu }: HeaderProps) => {
+  // const [searchItem, setSearchItem] = useState("");
+  // const [filteredProduct, setFilteredProduct] = useState([]);
+  // const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
+  //   const term = event.target.value;
+  //   setSearchItem(term);
+  //   if(term){
+  //     const filtered = products.filter(product =>
+  //        product.name.toLowerCase().includes(term.toLowerCase()));
+  //        setFilteredProduct(filtered)
+  //   }else{
+  //     setFilteredProduct(products)
+  //   }
+  // }
   return (
     <div className="relative">
       <div className=" bg-yellow-300 flex items-center justify-around md:flex-row-reverse p-5 ">
@@ -31,7 +44,7 @@ const Header = ({ menuOpen, toggleMenu }: HeaderProps) => {
             placeholder="Buscar producto..."
           />
         </div>
-
+  
         <button>
           <a href="#">
             <img
