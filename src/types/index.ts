@@ -9,3 +9,17 @@ export type HamburgerMenus = {
 export type Promotions = Omit<HamburgerMenus, "name"> 
 
 export type Viewed = HamburgerMenus
+
+export type Product = {
+  id:number;
+  title:string;
+  price:number;
+  description:string;
+  category:string;
+  image:string;
+}
+
+export type ErrorState = {
+  hasError: boolean;
+  message: string;
+}
