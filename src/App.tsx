@@ -4,6 +4,8 @@ import { useMartketPlace } from "./hooks/useMarketPlace";
 import Carrousel from "./components/Carrousel";
 import HamburgerMenu from "./components/HamburgerMenu";
 import RecentlyViewed from "./components/RecentlyViewed";
+import { StoreProduct } from "./components/StoreProduct";
+import useRequestProduct from "./apis/productApi";
 
 const App = () => {
   const {
@@ -23,12 +25,15 @@ const App = () => {
     nextViewedImage,
     prevViewedImage,
   } = useMartketPlace();
+  const {product, error} = useRequestProduct()
 
   return (
-    <div className="bg-gray-500 min-h-screen ">
+    <div className="bg-gray-200 min-h-screen ">
 
       <Header menuOpen={menuOpen} toggleMenu={toggleMenu} />
       {menuOpen && <HamburgerMenu data={data} setData={setData} />}
+      <div className="relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-300"></div>
       <Carrousel
         dbPromo={dbPromo}
         setDbPromo={setDbPromo}
@@ -37,8 +42,11 @@ const App = () => {
         nextImage={nextPromoImage}
         prevImage={prevPromoImage}
       />
+      </div>
 
-      {/* <div className="bg-gradient-to-t from-white to-slate-400 h-40 opacity-50 filter blur-lg"></div> */}
+    
+      <StoreProduct product={product}  error={error}/>
+
 
       <RecentlyViewed dbRecentViewed={dbRecentViewed} currentIndex={viewedIndex} nextImage={nextViewedImage} prevImage={prevViewedImage}/>
     </div>
