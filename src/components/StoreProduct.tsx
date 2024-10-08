@@ -6,6 +6,7 @@ type storeProductProps = {
 };
 
 export const StoreProduct = ({ product, error }: storeProductProps) => {
+
   return (
     <div className=" container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4 text-center">Store Product</h2>
@@ -14,8 +15,8 @@ export const StoreProduct = ({ product, error }: storeProductProps) => {
       )}
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {product.map((item) => (
-          <button>
-            <article className="bg-white  rounded-lg p-3 ">
+          <button key={item.id}>
+            <article  className="bg-white  rounded-lg p-3 ">
               <figure className="w-full h-48 shadow-md overflow-hidden">
                 <img
                   src={item.image}

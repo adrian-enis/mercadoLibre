@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 
 
 import { Promotions } from "../types";
@@ -15,7 +15,7 @@ type CarrouselProps = {
 
 const Carrousel = ({dbPromo, currentIndex,  nextImage, prevImage}:CarrouselProps) => {
  
-console.log(currentIndex)
+
   return (
     <div className="bg-slate-700  w-full relative z-30">
       {dbPromo.length > 0 && (

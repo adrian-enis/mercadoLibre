@@ -1,50 +1,54 @@
 import { useState } from "react";
-import { HamburgerMenus, Promotions, Viewed } from "../types";
+import { HamburgerMenus, Product, Promotions } from "../types";
 import { db } from "../data/db";
+
 import { promotions } from "../data/promotionDb";
-import { dbViewed } from "../data/dbViewed";
+import useRequestProduct from "../apis/productApi";
+import useFilteredProduct from "./useFilteredProduct";
 import useCarrousel from "./useCarrousel";
-export const useMartketPlace = () => {
+export const useMarketPlace = () => {
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+  
+    const { filteredProduct } = useFilteredProduct();
+    const { product } = useRequestProduct();
 
-    const [menuOpen, setMenuOpen] = useState<boolean>(false);
-    const toggleMenu = () => {
-      setMenuOpen(!menuOpen);
-    };
+  const [data, setData] = useState<HamburgerMenus[]>(db);
 
-    const [data, setData] = useState<HamburgerMenus[]>(db);
-
-    const {
-      items: dbPromo,
-      currentIndex: promoIndex,
-      nextImage: nextPromoImage,
-      prevImage: prevPromoImage,
-      setItems: setDbPromo,
+  const {
+    items: dbPromo,
+    currentIndex: promoIndex,
+    nextImage: nextPromoImage,
+    prevImage: prevPromoImage,
+    setItems: setDbPromo,
   } = useCarrousel<Promotions>(promotions);
 
   const {
-      items: dbRecentViewed,
-      currentIndex: viewedIndex,
-      nextImage: nextViewedImage,
-      prevImage: prevViewedImage,
-      setItems: setDbRecentViewed,
-  } = useCarrousel<Viewed>(dbViewed);
+    items: dbRecentViewed,
+    currentIndex: viewedIndex,
+    nextImage: nextViewedImage,
+    prevImage: prevViewedImage,
+    setItems: setDbRecentViewed,
+  } = useCarrousel<Product>(filteredProduct || [] );
 
-    return{
-      menuOpen,
-        setMenuOpen,
-        toggleMenu,
-        data,
-        setData,
-        dbPromo,
-        setDbPromo,
-        promoIndex,
-        nextPromoImage,
-        prevPromoImage,
-        dbRecentViewed,
-        setDbRecentViewed,
-        viewedIndex,
-        nextViewedImage,
-        prevViewedImage,
-
-    }
-}
+  return {
+    menuOpen,
+    setMenuOpen,
+    toggleMenu,
+    data,
+    setData,
+    dbPromo,
+    setDbPromo,
+    promoIndex,
+    nextPromoImage,
+    prevPromoImage,
+    filteredProduct,
+    dbRecentViewed,
+    setDbRecentViewed,
+    viewedIndex,
+    nextViewedImage,
+    prevViewedImage,
+  };
+};

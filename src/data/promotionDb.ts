@@ -1,21 +1,22 @@
+import { generateId } from "../helpers/helpers";
 import { Promotions } from "../types";
 
 
 export const promotions:Promotions[] = [
   {
-    id:9,
+    id: generateId(),
     image:"mercado_1",
   },
   {
-    id:10,
+    id:generateId(),
     image:"mercado_2",
   },
   {
-    id:11,
+    id:generateId(),
     image:"mercado_3",
   },
   {
-    id:12,
+    id:generateId(),
     image:"mercado_4",
   },
 ]

@@ -8,7 +8,7 @@ export type HamburgerMenus = {
 
 export type Promotions = Omit<HamburgerMenus, "name"> 
 
-export type Viewed = HamburgerMenus
+
 
 export type Product = {
   id:number;

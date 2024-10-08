@@ -9,7 +9,7 @@ type DataProps = {
   setData: React.Dispatch<React.SetStateAction<HamburgerMenus[]>>
 }
 const HamburgerMenu = ({data, setData}:DataProps) => {
- 
+
 
   return (
     <div className=" bg-white shadow-lg absolute z-40  w-full">

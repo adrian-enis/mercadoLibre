@@ -1,27 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import mercadoLogo from "/imagenes/mercadolibre.svg";
+
+
 
 
 type HeaderProps = {
   menuOpen: boolean;
   toggleMenu: () => void;
+
+  searchItem: string;
+
+  handleSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+ 
+  
 };
 
-const Header = ({ menuOpen, toggleMenu }: HeaderProps) => {
-  // const [searchItem, setSearchItem] = useState("");
-  // const [filteredProduct, setFilteredProduct] = useState([]);
-  // const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
-  //   const term = event.target.value;
-  //   setSearchItem(term);
-  //   if(term){
-  //     const filtered = products.filter(product =>
-  //        product.name.toLowerCase().includes(term.toLowerCase()));
-  //        setFilteredProduct(filtered)
-  //   }else{
-  //     setFilteredProduct(products)
-  //   }
-  // }
+const Header = ({ menuOpen, toggleMenu, searchItem, handleSearchChange }: HeaderProps) => {
+
   return (
     <div className="relative">
       <div className=" bg-yellow-300 flex items-center justify-around md:flex-row-reverse p-5 ">
@@ -40,11 +36,15 @@ const Header = ({ menuOpen, toggleMenu }: HeaderProps) => {
         <div className="max-w-[1200px] w-full ">
           <input
             className="w-full md:w-3/4 lg:w-2/3 pl-4 p-3 rounded-lg md:p-4 lg:p-5 transition-all duration-300"
-            type="search"
+            type="text"
+            value={searchItem}
+            onChange={handleSearchChange}
             placeholder="Buscar producto..."
           />
         </div>
-  
+
+        {/* {error.hasError && <p className="text-red-500">{error.message}</p>} */}
+         
         <button>
           <a href="#">
             <img
@@ -60,3 +60,5 @@ const Header = ({ menuOpen, toggleMenu }: HeaderProps) => {
 };
 
 export default Header;
+
+
